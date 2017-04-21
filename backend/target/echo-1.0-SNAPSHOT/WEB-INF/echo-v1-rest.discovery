@@ -1,0 +1,308 @@
+{
+ "kind": "discovery#restDescription",
+ "etag": "\"RnkXbyw9us4_w3H-FU6An0C4oYs/fgy4VvajOltv2-WjaiweN0pROQo\"",
+ "discoveryVersion": "v1",
+ "id": "echo:v1",
+ "name": "echo",
+ "version": "v1",
+ "description": "This is an API",
+ "icons": {
+  "x16": "https://www.gstatic.com/images/branding/product/1x/googleg_16dp.png",
+  "x32": "https://www.gstatic.com/images/branding/product/1x/googleg_32dp.png"
+ },
+ "protocol": "rest",
+ "baseUrl": "https://${endpoints.project.id}.appspot.com/_ah/api/echo/v1/",
+ "basePath": "/_ah/api/echo/v1/",
+ "rootUrl": "https://${endpoints.project.id}.appspot.com/_ah/api/",
+ "servicePath": "echo/v1/",
+ "batchPath": "batch",
+ "parameters": {
+  "alt": {
+   "type": "string",
+   "description": "Data format for the response.",
+   "default": "json",
+   "enum": [
+    "json"
+   ],
+   "enumDescriptions": [
+    "Responses with Content-Type of application/json"
+   ],
+   "location": "query"
+  },
+  "fields": {
+   "type": "string",
+   "description": "Selector specifying which fields to include in a partial response.",
+   "location": "query"
+  },
+  "key": {
+   "type": "string",
+   "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+   "location": "query"
+  },
+  "oauth_token": {
+   "type": "string",
+   "description": "OAuth 2.0 token for the current user.",
+   "location": "query"
+  },
+  "prettyPrint": {
+   "type": "boolean",
+   "description": "Returns response with indentations and line breaks.",
+   "default": "true",
+   "location": "query"
+  },
+  "quotaUser": {
+   "type": "string",
+   "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters. Overrides userIp if both are provided.",
+   "location": "query"
+  },
+  "userIp": {
+   "type": "string",
+   "description": "IP address of the site where the request originates. Use this if you want to enforce per-user limits.",
+   "location": "query"
+  }
+ },
+ "auth": {
+  "oauth2": {
+   "scopes": {
+    "https://www.googleapis.com/auth/userinfo.email": {
+     "description": "View your email address"
+    }
+   }
+  }
+ },
+ "schemas": {
+  "Equipo": {
+   "id": "Equipo",
+   "type": "object",
+   "properties": {
+    "anioFundation": {
+     "type": "string"
+    },
+    "nombre": {
+     "type": "string"
+    },
+    "titulos": {
+     "type": "string"
+    }
+   }
+  },
+  "EquipoCollection": {
+   "id": "EquipoCollection",
+   "type": "object",
+   "properties": {
+    "items": {
+     "type": "array",
+     "items": {
+      "$ref": "Equipo"
+     }
+    }
+   }
+  },
+  "Message": {
+   "id": "Message",
+   "type": "object",
+   "properties": {
+    "message": {
+     "type": "string"
+    }
+   }
+  }
+ },
+ "methods": {
+  "agregarEquipo": {
+   "id": "echo.agregarEquipo",
+   "path": "agregarEquipo",
+   "httpMethod": "POST",
+   "parameters": {
+    "anio": {
+     "type": "string",
+     "required": true,
+     "location": "query"
+    },
+    "name": {
+     "type": "string",
+     "required": true,
+     "location": "query"
+    },
+    "titulos": {
+     "type": "string",
+     "required": true,
+     "location": "query"
+    }
+   },
+   "parameterOrder": [
+    "anio",
+    "name",
+    "titulos"
+   ],
+   "response": {
+    "$ref": "Message"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "echo": {
+   "id": "echo.echo",
+   "path": "echo",
+   "httpMethod": "POST",
+   "parameters": {
+    "n": {
+     "type": "integer",
+     "format": "int32",
+     "location": "query"
+    }
+   },
+   "request": {
+    "$ref": "Message",
+    "parameterName": "resource"
+   },
+   "response": {
+    "$ref": "Message"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "echo_path_parameter": {
+   "id": "echo.echo_path_parameter",
+   "path": "echo/{n}",
+   "httpMethod": "POST",
+   "parameters": {
+    "n": {
+     "type": "integer",
+     "required": true,
+     "format": "int32",
+     "location": "path"
+    }
+   },
+   "parameterOrder": [
+    "n"
+   ],
+   "request": {
+    "$ref": "Message",
+    "parameterName": "resource"
+   },
+   "response": {
+    "$ref": "Message"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "editarEquipo": {
+   "id": "echo.editarEquipo",
+   "path": "editarEquipo",
+   "httpMethod": "POST",
+   "parameters": {
+    "anio": {
+     "type": "string",
+     "required": true,
+     "location": "query"
+    },
+    "name": {
+     "type": "string",
+     "required": true,
+     "location": "query"
+    },
+    "titulos": {
+     "type": "string",
+     "required": true,
+     "location": "query"
+    }
+   },
+   "parameterOrder": [
+    "anio",
+    "name",
+    "titulos"
+   ],
+   "response": {
+    "$ref": "Message"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "eliminarEquipo": {
+   "id": "echo.eliminarEquipo",
+   "path": "eliminarEquipo",
+   "httpMethod": "POST",
+   "parameters": {
+    "name": {
+     "type": "string",
+     "required": true,
+     "location": "query"
+    }
+   },
+   "parameterOrder": [
+    "name"
+   ],
+   "response": {
+    "$ref": "Message"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "equipos": {
+   "id": "echo.equipos",
+   "path": "equipos",
+   "httpMethod": "GET",
+   "response": {
+    "$ref": "EquipoCollection"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "infoEquipo": {
+   "id": "echo.infoEquipo",
+   "path": "infoEquipo",
+   "httpMethod": "POST",
+   "parameters": {
+    "name": {
+     "type": "string",
+     "required": true,
+     "location": "query"
+    }
+   },
+   "parameterOrder": [
+    "name"
+   ],
+   "response": {
+    "$ref": "Equipo"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
+  "pruebafinal": {
+   "id": "echo.pruebafinal",
+   "path": "pruebafinal",
+   "httpMethod": "POST",
+   "parameters": {
+    "n": {
+     "type": "integer",
+     "required": true,
+     "format": "int32",
+     "location": "query"
+    },
+    "name": {
+     "type": "string",
+     "required": true,
+     "location": "query"
+    }
+   },
+   "parameterOrder": [
+    "n",
+    "name"
+   ],
+   "response": {
+    "$ref": "Message"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  }
+ }
+}
