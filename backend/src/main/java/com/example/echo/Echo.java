@@ -76,14 +76,14 @@ public class Echo {
   @ApiMethod(name="infoEquipo", path="infoEquipo")
   public Equipo infoEquipo(@Named("name") String name){
       Equipo equi= con.darEquipo(name);
-      Message men= new Message("el equipo no se encuentra en la lista");
+      
 
       if(equi!=null){
           return equi;
       }
       else{
-          System.out.println(men);
-          return null;
+         Equipo ret= new Equipo(null,null,null);
+          return ret;
       }
   }
 
@@ -94,6 +94,7 @@ public class Echo {
 
       Message verdad= new Message ("el equipo se edito correctamente");
       Message falso= new Message ("el equipo no se encuentra en la lista");
+       if(name!=""&& anio!=""&&titulos!=""){
       boolean ver= con.editarInformacionEquipo(name, anio, titulos);
 
       if(ver ==true){
@@ -104,25 +105,41 @@ public class Echo {
       else{
           return doEcho(falso,1);
       }
+      
+       }
+       else{
+           Message ret= new Message("por favor llene los campos");
+          return ret;
+       }
   }
 
 
   @ApiMethod (httpMethod = ApiMethod.HttpMethod.POST, name="eliminarEquipo", path="eliminarEquipo")
   public Message eliminarEquipo(@Named("name") String name){
 
+      
       Message verdad= new Message ("el equipo se elimino correctamente");
       Message falso= new Message ("el equipo no se encuentra en la lista");
-      boolean ver= con.eliminarEquipo(name);
+      if (name!=""){
+        boolean ver= con.eliminarEquipo(name);
 
-      if(ver ==true){
+        if(ver ==true){
 
-          return doEcho(verdad,1);
+         return doEcho(verdad,1);
 
       }
-      else{
+       else{
           return doEcho(falso,1);
       }
+      }
+     else{
+          Message ret= new Message("por favor ingrese un nombre");
+          return ret;
+          
+      }
+  
   }
+      
 
 
   @ApiMethod (httpMethod = ApiMethod.HttpMethod.POST, name="agregarEquipo", path="agregarEquipo")
@@ -130,6 +147,7 @@ public class Echo {
 
       Message verdad = new Message(name +" "+" se agrego correctamente");
       Message falso = new Message("el equipo que intenta agregar ya existe");
+      if(name!=""&& anio!=""&&titulos!=""){
       boolean ver = con.agregarEquipo(name,anio,titulos);
 
       if (ver == true) {
@@ -138,6 +156,12 @@ public class Echo {
 
       } else {
           return doEcho(falso, 1);
+      }
+      
+      }
+      else{
+          Message ret= new Message("por favor llene los campos");
+          return ret;
       }
   }
 

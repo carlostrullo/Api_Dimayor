@@ -126,6 +126,7 @@ private final ArrayList <Equipo> equipos;
         
         
         try {
+            equipos.removeAll(equipos);
             String s="SELECT * FROM Equipo;";
 	Query q = entity.createNativeQuery(s);
 			 List<Equipo> list = q.getResultList();
