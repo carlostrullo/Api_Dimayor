@@ -9,7 +9,7 @@ import logo from './logo.svg';
 import axios from 'axios';
 import fetch from 'isomorphic-fetch';
 //import React, {PropTypes} from 'react';
-import {ModalContainer, ModalDialog} from 'react-modal-dialog';
+
 
 class AgregarEquipo extends Component {
 
@@ -82,21 +82,7 @@ state = {
           <input type="text" name="anio" id="anioD"/><br/>
           titulos:<br/>
           <input type="text" name="titulos" id="titulosD"/><br/><br/> 
-          <button onClick={this.handleClick}>
-          {
-              this.state.isShowingModal &&
-        <ModalContainer onClose={this.handleClose}>
-         <ModalDialog onClose={this.handleClose}>{
-             name
-             
-              }
-               
-               
-          </ModalDialog>      
-        </ModalContainer>
-
-         
-          }Registrar</button>
+          <button onClick={this.handleClick}>Registrar</button>
   
   
         </form>
